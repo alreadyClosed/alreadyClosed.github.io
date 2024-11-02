@@ -1,12 +1,27 @@
-const url = "https://formspree.io/f/xqakpyke"; // Replace with your Formspree URL
-const data = {
-    message: "Your log message here" // Replace with your actual log message
-};
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUCK YOU!</title>
+    <script>
+        // JavaScript code to send a POST request
+        const url = "https://formspree.io/f/YOUR_FORM_ID"; // Replace with your Formspree URL
+        const data = {
+            message: "Your log message here" // Replace with your actual log message
+        };
 
-fetch(url, {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json' // Set the content type to JSON
-    },
-    body: JSON.stringify(data) // Convert the data to a JSON string
-});
+        // Immediately execute the fetch request
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Set the content type to JSON
+            },
+            body: JSON.stringify(data) // Convert the data to a JSON string
+        });
+    </script>
+</head>
+<body>
+    <!-- The body is empty as there are no user interface elements -->
+</body>
+</html>
