@@ -1,0 +1,19 @@
+name: Log Data
+
+on:
+  repository_dispatch:
+    types: [log-data]
+
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Log data to file
+        run: |
+          echo "Message: ${{ github.event.client_payload.message }}" >> log.txt
+          echo "Logged at: $(date)" >> log.txt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
