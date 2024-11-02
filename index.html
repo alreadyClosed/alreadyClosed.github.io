@@ -5,41 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log Data</title>
     <script>
-        async function sendLog(event) {
-            event.preventDefault(); // Prevent default form submission
-            const message = document.getElementById('message').value;
-
+        // Function to send a POST request
+        async function sendLog(message) {
+            const url = "https://formspree.io/f/xqakpyke"; // Change to your Formspree URL or Google Forms URL
             const data = {
                 message: message
             };
 
-            const response = await fetch(secrets.SECRETTHING, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/vnd.github.v3+json',
-                    'Authorization': `token YOUR_GITHUB_TOKEN`, // Include your GitHub token here
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    event_type: 'log-data',
-                    client_payload: data
-                })
-            });
-
-            if (response.ok) {
-                alert('Data logged successfully!');
-                document.getElementById('message').value = ''; // Clear the input after successful submission
-            } else {
-                alert('Failed to log data. Check your token and repository settings.');
+            try {
+                await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+            } catch (error) {
+                // Error handling can be added here if necessary
             }
         }
+
+        // Automatically send a log message when the script runs
+        sendLog("This is a test message."); // Change this message as needed
     </script>
 </head>
 <body>
-    <h1>Log Data</h1>
-    <form onsubmit="sendLog(event)">
-        <textarea id="message" placeholder="Your message..." required></textarea>
-        <button type="submit">Send</button>
-    </form>
+    <h1>Data Logging Page</h1>
 </body>
 </html>
