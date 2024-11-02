@@ -16,4 +16,4 @@ jobs:
           echo "Message: ${{ github.event.client_payload.message }}" >> log.txt
           echo "Logged at: $(date)" >> log.txt
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SECRETTHING }}
